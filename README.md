@@ -107,7 +107,7 @@ Review file on new `rox-mount-b` Pod:
 kubectl exec rox-mount-b -n rox-demo -- ls -lh ./data
 ```
 
-Review **Used By:** section of the PRX PVC:
+Review **Used By:** section of the ROX PVC:
 ```shell
 kubectl describe pvc demo-rox -n rox-demo
 ```
