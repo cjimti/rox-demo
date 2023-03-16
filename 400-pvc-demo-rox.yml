@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: demo-rox
+  namespace: rox-demo
+spec:
+  dataSource:
+    kind: PersistentVolumeClaim
+    name: demo-rwo
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: "100Mi"
+  storageClassName: rook-ceph-block
+  volumeMode: Filesystem

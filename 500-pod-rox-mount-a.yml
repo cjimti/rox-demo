@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rox-mount-a
+  namespace: rox-demo
+spec:
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 3000
+    fsGroup: 2000
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  volumes:
+    - name: demo-rox
+      persistentVolumeClaim:
+        claimName: demo-rox
+  containers:
+    - name: populate
+      imagePullPolicy: IfNotPresent
+      image: busybox:1.28
+      command: [ "/bin/tail", "-f", "/dev/null" ]
+      volumeMounts:
+        - mountPath: /data
+          name: demo-rox
