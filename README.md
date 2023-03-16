@@ -1,6 +1,14 @@
 # ReadOnlyMany Demo
 
-Steps to create a ReadOnlyMany (rox) PVC on Kubernetes
+Steps to create a ReadOnlyMany (ROX) PVC on Kubernetes:
+- Create a RWO (ReadWriteOnce) PVC
+- Use a Pod to mount and populate the RWO PVC then delete the Pod.
+- Create a ROX (ReadOnlyMany) PVC from the existing RWO (ReadWriteOnce) PVC
+- Mount the new ROX PVC with a Pod.
+- Delete the original RWO PVC
+- Additional Pods may now mount the new ROX PVC.
+
+## Steps
 
 Create `pvci-test` Namespace:
 ```shell
